@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aapka Bhai — Romantic Surprise Packs</title>
+    <style>
+      :root {
+        --pink-1: #ffeaf6;
+        --pink-2: #ffd3ec;
+        --accent: #ff4fa3;
+        --accent-2: #ff9a9e;
+        --glass: rgba(255, 255, 255, 0.65);
+        --glass-border: rgba(255, 255, 255, 0.45);
+        --muted: #6b4a86;
+        --txt: #2a1241;
+        --shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+        --btn-h: 56px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Poppins, system-ui, Arial;
+      }
+      html,
+      body {
+        height: 100%;
+        background: linear-gradient(180deg, var(--pink-1), #fff);
+        color: var(--txt);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* Top badge */
+      .badge-top {
+        position: fixed;
+        left: 14px;
+        top: 14px;
+        z-index: 1400;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-weight: 800;
+        box-shadow: 0 10px 30px rgba(255, 77, 150, 0.12);
+      }
+      .badge-top .small {
+        display: block;
+        font-size: 11px;
+        opacity: 0.95;
+        font-weight: 600;
+      }
+
+      /* Discount banner */
+      .discount-banner {
+        position: fixed;
+        left: 50%;
+        top: 76px;
+        transform: translateX(-50%);
+        z-index: 1300;
+        background: linear-gradient(90deg, var(--accent), #ffd36b);
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-weight: 800;
+        box-shadow: 0 20px 60px rgba(255, 107, 157, 0.08);
+        animation: discountPulse 2.2s infinite;
+      }
+      @keyframes discountPulse {
+        0% {
+          transform: translateX(-50%) scale(1);
+        }
+        50% {
+          transform: translateX(-50%) scale(1.03);
+        }
+        100% {
+          transform: translateX(-50%) scale(1);
+        }
+      }
+      .discount-banner .fire {
+        margin: 0 6px;
+        transform: translateY(0);
+        display: inline-block;
+      }
+
+      /* Floating WhatsApp */
+      .whatsapp-float {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        width: 64px;
+        height: 64px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #25d366, #19b957);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        z-index: 1500;
+        box-shadow: 0 12px 30px rgba(37, 211, 102, 0.18);
+        animation: bounce 2s infinite;
+      }
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-12px);
+        }
+        60% {
+          transform: translateY(-6px);
+        }
+      }
+
+      /* hearts */
+      #hearts {
+        pointer-events: none;
+        position: fixed;
+        inset: 0;
+        z-index: 600;
+        overflow: hidden;
+      }
+
+      /* wrap */
+      .wrap {
+        max-width: 1120px;
+        margin: 140px auto 80px;
+        padding: 0 18px;
+      }
+
+      /* HERO */
+      .hero {
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .hero-left {
+        flex: 1;
+        max-width: 720px;
+      }
+      .hero-right {
+        width: 320px;
+      }
+      .hero .lead {
+        color: var(--muted);
+        margin-top: 10px;
+        margin-bottom: 16px;
+      }
+      .kicker {
+        display: inline-block;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      /* buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        padding: 0 16px;
+        height: var(--btn-h);
+        font-weight: 800;
+        cursor: pointer;
+        min-width: 140px;
+      }
+      .btn.primary {
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #fff;
+        box-shadow: 0 12px 30px rgba(124, 58, 237, 0.08);
+      }
+      .btn.ghost {
+        background: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        color: var(--txt);
+      }
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      /* hero right cartoon */
+      .glass {
+        padding: 14px;
+        border-radius: 14px;
+        background: var(--glass);
+        backdrop-filter: blur(6px);
+        border: 1px solid var(--glass-border);
+        box-shadow: var(--shadow);
+      }
+      .cartoon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .speech {
+        background: #fff;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-weight: 800;
+        color: var(--accent);
+      }
+      .thumb {
+        font-size: 48px;
+      }
+
+      /* sections */
+      .section {
+        margin-top: 40px;
+        padding: 28px 0;
+      }
+      .section-title {
+        font-family: Playfair Display, serif;
+        font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+        color: var(--accent);
+        text-align: center;
+        margin-bottom: 18px;
+      }
+
+      /* samples */
+      .samples-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .sample {
+        background: linear-gradient(180deg, #fff, #fff);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        display: block;
+        transition: transform 0.28s;
+      }
+      .sample:hover {
+        transform: translateY(-8px);
+      }
+      .sample-thumb {
+        height: 140px;
+      }
+      .sample-body {
+        padding: 12px;
+      }
+
+      /* pricing tiers */
+      .tiers {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-top: 12px;
+      }
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.75),
+          rgba(255, 250, 252, 0.7)
+        );
+        border-radius: 14px;
+        padding: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: visible;
+        transition: transform 0.28s;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+      }
+      .card .card-head {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .card .icon {
+        font-size: 28px;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #fff;
+      }
+      .card .labels h3 {
+        margin: 0;
+        font-size: 1.05rem;
+      }
+      .card .labels small {
+        display: block;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      /* price row */
+      .price-row {
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+        margin: 12px 0;
+      }
+      .old {
+        font-size: 0.95rem;
+        color: var(--muted);
+        text-decoration: line-through;
+      }
+      .price {
+        font-family: Playfair Display, serif;
+        font-size: 1.6rem;
+        color: var(--accent);
+      }
+      .price.no-old {
+        font-size: 1.4rem;
+      }
+      .save {
+        font-size: 0.9rem;
+        color: #d81b60;
+        font-weight: 700;
+      }
+
+      /* ribbon & badge */
+      .ribbon {
+        position: absolute;
+        right: 12px;
+        top: -12px;
+        background: #fff;
+        color: var(--accent);
+        padding: 6px 8px;
+        border-radius: 8px;
+        font-weight: 800;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+      }
+      .badge-off {
+        position: absolute;
+        left: 12px;
+        top: -12px;
+        background: linear-gradient(90deg, var(--accent), #ffd36b);
+        color: #fff;
+        padding: 6px 8px;
+        border-radius: 999px;
+        font-weight: 800;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+      }
+
+      /* highlight card */
+      .highlight {
+        border: 2px solid rgba(255, 99, 160, 0.08);
+        box-shadow: 0 18px 48px rgba(255, 99, 160, 0.08);
+      }
+
+      /* features list */
+      .features-list {
+        margin: 10px 0 14px;
+        padding-left: 18px;
+      }
+      .features-list li {
+        margin: 6px 0;
+        color: var(--muted);
+      }
+
+      /* cta area in card */
+      .card-cta {
+        text-align: center;
+        margin-top: 8px;
+      }
+      .order {
+        min-width: 180px;
+      }
+
+      /* footer CTA */
+      .footer-cta {
+        margin: 36px 0;
+        padding: 18px;
+        border-radius: 12px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 230, 245, 0.6),
+          rgba(255, 245, 250, 0.6)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      @media (max-width: 800px) {
+        .footer-cta {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+
+      /* toasts */
+      .toasts {
+        position: fixed;
+        right: 16px;
+        bottom: 18px;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 320px;
+      }
+      .toast {
+        background: linear-gradient(90deg, #00c851, #007e33);
+        color: #fff;
+        padding: 12px 14px;
+        border-radius: 12px;
+        font-weight: 800;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      @media (max-width: 720px) {
+        .wrap {
+          margin: 110px 14px 60px;
+        }
+        .hero {
+          flex-direction: column;
+        }
+        .hero-right {
+          width: 100%;
+        }
+        .whatsapp-float {
+          right: 14px;
+          bottom: 14px;
+        }
+      }
+
+      /* small helpers */
+      .small-muted {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top badge -->
+    <div class="badge-top">
+      Aapka Bhai<span class="small"> · V. S Rathore</span>
+    </div>
+
+    <!-- Discount banner -->
+    <div class="discount-banner" id="discountBanner">
+      <span class="fire">🔥</span>
+      FIRST ORDER 50% OFF — UPTO ₹40!
+      <span class="fire">🔥</span>
+    </div>
+
+    <!-- Hearts area -->
+    <div id="hearts" aria-hidden="true"></div>
+
+    <!-- Floating WhatsApp -->
+    <a
+      id="whatsappFloat"
+      class="whatsapp-float"
+      role="button"
+      aria-label="Chat on WhatsApp"
+      href="#"
+      data-msg=""
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Main page -->
+    <main class="wrap">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <h1>Make Them Smile — Romantic Surprise Packs</h1>
+          <p class="lead">
+            Private • Secure • Express your feelings with curated packs. Order
+            fast on WhatsApp.
+          </p>
+
+          <div class="cta-row">
+            <button
+              id="orderCustom"
+              class="btn primary"
+              data-msg="Hi Bhai! I want Custom Pack ₹259 (FIRST ORDER 50% OFF)."
+            >
+              Order Custom ₹259
+            </button>
+            <a href="#samples" class="btn ghost">See Samples</a>
+          </div>
+
+          <div class="feats">
+            <div class="feat">✅ Auto Save Number</div>
+            <div class="feat">📅 Weekly Offers (Sun & Fri)</div>
+            <div class="feat">🎂 Birthday Reminders</div>
+          </div>
+        </div>
+
+        <aside class="hero-right glass">
+          <div class="cartoon">
+            <div class="speech">SAFE! 💯</div>
+            <div class="thumb">👍</div>
+          </div>
+          <div class="mini-info">
+            <strong>Auto Number Save</strong>
+            <p>Click any WhatsApp order → number auto-saved for offers.</p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- SAMPLES -->
+      <section id="samples" class="section samples">
+        <h2 class="section-title">Live Samples — Try Now</h2>
+        <div class="samples-grid">
+          <a
+            class="sample"
+            href="https://lr2938650-svg.github.io/sorry/"
+            target="_blank"
+            rel="noopener"
+          >
+            <div
+              class="sample-thumb"
+              style="background: linear-gradient(45deg, #f093fb, #f5576c)"
+            ></div>
+            <div class="sample-body">
+              <h4>Sorry Pack (Demo)</h4>
+              <p>Emotional flow & presentation demo.</p>
+            </div>
+          </a>
+
+          <a
+            class="sample"
+            href="https://lambent-brigadeiros-941332.netlify.app/"
+            target="_blank"
+            rel="noopener"
+          >
+            <div
+              class="sample-thumb"
+              style="background: linear-gradient(45deg, #ff9a9e, #fecfef)"
+            ></div>
+            <div class="sample-body">
+              <h4>Lambent Brigadeiros</h4>
+              <p>Live feedback demo.</p>
+            </div>
+          </a>
+
+          <a
+            class="sample"
+            href="https://superlative-hotteok-888af7.netlify.app/"
+            target="_blank"
+            rel="noopener"
+          >
+            <div
+              class="sample-thumb"
+              style="background: linear-gradient(45deg, #ffecd2, #fcb69f)"
+            ></div>
+            <div class="sample-body">
+              <h4>Superlative Hotteok</h4>
+              <p>Custom surprise demo.</p>
+            </div>
+          </a>
+
+          <a
+            class="sample"
+            href="https://beautiful-buttercream-a1385c.netlify.app/"
+            target="_blank"
+            rel="noopener"
+          >
+            <div
+              class="sample-thumb"
+              style="background: linear-gradient(45deg, #a8edea, #fed6e3)"
+            ></div>
+            <div class="sample-body">
+              <h4>Beautiful Buttercream</h4>
+              <p>Presentation & music sample.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section id="pricing" class="section pricing">
+        <h2 class="section-title">Packs & Pricing</h2>
+        <div class="tiers">
+          <!-- Discount card 1: Basic -->
+          <article class="card discount">
+            <div class="card-head">
+              <div class="icon">📄</div>
+              <div class="labels">
+                <h3>Basic Page</h3>
+                <small>Ready template + password</small>
+              </div>
+              <div class="badge-off">FIRST ORDER</div>
+            </div>
+            <div class="price-row">
+              <div class="old">₹99</div>
+              <div class="price">₹59</div>
+              <div class="save">You save ₹40</div>
+            </div>
+            <ul class="features-list">
+              <li>Ready template</li>
+              <li>Password protected</li>
+              <li>Quick surprise</li>
+            </ul>
+            <div class="card-cta">
+              <button
+                class="btn order"
+                data-plan="Basic Page"
+                data-old="99"
+                data-price="59"
+                data-discounted="true"
+              >
+                Order — ₹59
+              </button>
+            </div>
+          </article>
+
+          <!-- Discount card 2: Custom Name -->
+          <article class="card discount">
+            <div class="card-head">
+              <div class="icon">✍️</div>
+              <div class="labels">
+                <h3>Custom Name</h3>
+                <small>+ Partner name + Your message</small>
+              </div>
+              <div class="badge-off">FIRST ORDER</div>
+            </div>
+            <div class="price-row">
+              <div class="old">₹109</div>
+              <div class="price">₹69</div>
+              <div class="save">You save ₹40</div>
+            </div>
+            <ul class="features-list">
+              <li>Personalized name</li>
+              <li>Custom message</li>
+              <li>Personal touch</li>
+            </ul>
+            <div class="card-cta">
+              <button
+                class="btn order"
+                data-plan="Custom Name"
+                data-old="109"
+                data-price="69"
+                data-discounted="true"
+              >
+                Order — ₹69
+              </button>
+            </div>
+          </article>
+
+          <!-- Discount card 3: Photo + Music -->
+          <article class="card highlight discount">
+            <div class="card-head">
+              <div class="icon">💝</div>
+              <div class="labels">
+                <h3>Photos + Music</h3>
+                <small>Photos + music + timeline</small>
+              </div>
+              <div class="ribbon">BEST VALUE</div>
+              <div class="badge-off">FIRST ORDER</div>
+            </div>
+            <div class="price-row">
+              <div class="old">₹199</div>
+              <div class="price">₹159</div>
+              <div class="save">You save ₹40</div>
+            </div>
+            <ul class="features-list">
+              <li>179+ Romantic photos</li>
+              <li>Premium love music</li>
+              <li>Love timeline</li>
+            </ul>
+            <div class="card-cta">
+              <button
+                class="btn order"
+                data-plan="Photos + Music"
+                data-old="199"
+                data-price="159"
+                data-discounted="true"
+              >
+                Order — ₹159
+              </button>
+            </div>
+          </article>
+
+          <!-- Non-discount: Sorry Pack -->
+          <article class="card">
+            <div class="card-head">
+              <div class="icon">🙏</div>
+              <div class="labels">
+                <h3>Sorry Pack</h3>
+                <small>Full photos + name + sweet msg</small>
+              </div>
+            </div>
+            <div class="price-row">
+              <div class="price no-old">₹129</div>
+            </div>
+            <ul class="features-list">
+              <li>Full photos</li>
+              <li>Name included</li>
+              <li>Sweet apology message</li>
+            </ul>
+            <div class="card-cta">
+              <button
+                class="btn order"
+                data-plan="Sorry Pack"
+                data-old="129"
+                data-price="129"
+                data-discounted="false"
+              >
+                Order — ₹129
+              </button>
+            </div>
+          </article>
+
+          <!-- Non-discount: Birthday Pack -->
+          <article class="card">
+            <div class="card-head">
+              <div class="icon">🎂</div>
+              <div class="labels">
+                <h3>Birthday Pack</h3>
+                <small>Music, confetti & countdown</small>
+              </div>
+            </div>
+            <div class="price-row">
+              <div class="price no-old">₹149</div>
+            </div>
+            <ul class="features-list">
+              <li>Birthday music</li>
+              <li>Confetti animation</li>
+              <li>Special wish</li>
+            </ul>
+            <div class="card-cta">
+              <button
+                class="btn order"
+                data-plan="Birthday Pack"
+                data-old="149"
+                data-price="149"
+                data-discounted="false"
+              >
+                Order — ₹149
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Footer CTA -->
+      <section class="footer-cta">
+        <div>
+          <strong>Ready to surprise?</strong>
+          <p>Order quickly on WhatsApp — First order 50% OFF (upto ₹40)</p>
+        </div>
+        <div>
+          <button id="footerOrder" class="btn primary">
+            Order on WhatsApp
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Toast container -->
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+
+    <!-- Weekly popup (hidden) -->
+    <div id="weeklyPopup" class="modal" aria-hidden="true">
+      <div class="modal-card">
+        <h3>🎁 Weekly Special</h3>
+        <p>First Order 50% OFF — Click any order to claim.</p>
+        <div class="modal-actions">
+          <button id="claimWeekly" class="btn primary">Claim Offer</button>
+          <button onclick="closeWeekly()" class="btn ghost">Later</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // CONFIG
+      const WA_NUMBER = "6350394711"; // final number
+      const WA_BASE = "https://wa.me/91" + WA_NUMBER;
+      const SAVED_KEY = "aapka_numbers_v1";
+      const WEEKLY_KEY = "aapka_weekly_v1";
+
+      // UTILS: toasts
+      function toast(msg, t = 3500) {
+        const root = document.getElementById("toasts");
+        const el = document.createElement("div");
+        el.className = "toast";
+        el.textContent = msg;
+        root.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = "all .35s";
+          el.style.opacity = 0;
+          el.style.transform = "translateY(8px)";
+          setTimeout(() => el.remove(), 360);
+        }, t);
+      }
+
+      // AUTO-SAVE contact (saves number with label "Aapka Bhai")
+      function saveContact() {
+        try {
+          const arr = JSON.parse(localStorage.getItem(SAVED_KEY) || "[]");
+          if (!arr.includes(WA_NUMBER)) {
+            arr.push(WA_NUMBER);
+            localStorage.setItem(SAVED_KEY, JSON.stringify(arr));
+            toast("✅ Number Auto-Saved! Weekly offers activated");
+          } else {
+            toast("✅ Number already saved");
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      // OPEN WHATSAPP with message and auto-save
+      function openWhatsAppWith(msg) {
+        saveContact();
+        const text = encodeURIComponent(
+          msg + " (FIRST ORDER 50% OFF UPTO ₹40!)"
+        );
+        window.open(WA_BASE + "?text=" + text, "_blank");
+      }
+
+      // Setup floating WA button
+      const waFloat = document.getElementById("whatsappFloat");
+      waFloat.addEventListener("click", (e) => {
+        e.preventDefault();
+        openWhatsAppWith("Hi Bhai! I want to order now.");
+      });
+
+      // Hook hero/order buttons
+      document.addEventListener("click", function (ev) {
+        const btn =
+          ev.target.closest &&
+          ev.target.closest(".order, #orderCustom, #footerOrder, #claimWeekly");
+        if (!btn) return;
+        ev.preventDefault();
+        // if it's an order card
+        if (btn.classList && btn.classList.contains("order")) {
+          const plan = btn.dataset.plan || "Custom";
+          const price = btn.dataset.price;
+          const discounted = btn.dataset.discounted === "true";
+          const msg = `Hi Bhai! I want ${plan} — ₹${price}${
+            discounted ? " (FIRST ORDER 50% OFF applied)" : ""
+          }`;
+          openWhatsAppWith(msg);
+          return;
+        }
+        if (btn.id === "orderCustom") {
+          const msg = btn.dataset.msg || "Hi Bhai! I want Custom Pack";
+          openWhatsAppWith(msg);
+          return;
+        }
+        if (btn.id === "footerOrder") {
+          openWhatsAppWith(
+            "Hi Bhai! I want to order now — FIRST ORDER please."
+          );
+          return;
+        }
+        if (btn.id === "claimWeekly") {
+          saveContact();
+          openWhatsAppWith("Hi Bhai! Claiming weekly offer — I want to order.");
+          closeWeekly();
+          return;
+        }
+      });
+
+      // HEART RAIN
+      (function hearts() {
+        const root = document.getElementById("hearts");
+        const icons = ["💖", "💕", "💗"];
+        setInterval(() => {
+          const el = document.createElement("div");
+          el.textContent = icons[Math.floor(Math.random() * icons.length)];
+          el.style.position = "fixed";
+          el.style.left = Math.random() * 95 + "vw";
+          el.style.top = "-20px";
+          el.style.fontSize = 10 + Math.random() * 26 + "px";
+          el.style.opacity = 0.9;
+          el.style.zIndex = 600;
+          el.style.transition = "transform 5s linear, opacity 5s linear";
+          document.body.appendChild(el);
+          requestAnimationFrame(() => {
+            el.style.transform = `translateY(${
+              window.innerHeight + 60
+            }px) rotate(${Math.random() * 360}deg)`;
+            el.style.opacity = 0.2;
+          });
+          setTimeout(() => el.remove(), 5600);
+        }, 900);
+      })();
+
+      // SHOW weekly popup once every 7 days for saved users
+      (function weeklyPopup() {
+        try {
+          const last = Number(localStorage.getItem(WEEKLY_KEY) || 0);
+          const now = Date.now();
+          // show only if saved number exists
+          const saved = JSON.parse(localStorage.getItem(SAVED_KEY) || "[]");
+          if (saved.length === 0) return; // don't spam if user not saved
+          if (now - last > 7 * 24 * 60 * 60 * 1000) {
+            setTimeout(() => {
+              showWeekly();
+              localStorage.setItem(WEEKLY_KEY, String(Date.now()));
+            }, 1200);
+          }
+        } catch (e) {}
+      })();
+      function showWeekly() {
+        document.getElementById("weeklyPopup").style.display = "flex";
+        document
+          .getElementById("weeklyPopup")
+          .setAttribute("aria-hidden", "false");
+      }
+      function closeWeekly() {
+        document.getElementById("weeklyPopup").style.display = "none";
+        document
+          .getElementById("weeklyPopup")
+          .setAttribute("aria-hidden", "true");
+      }
+
+      // Accessibility: make order buttons touch friendly
+      document
+        .querySelectorAll(".btn, .order")
+        .forEach((el) => el.setAttribute("role", "button"));
+
+      // Simple intersection observer for slide-in
+      const ob = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) en.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.18 }
+      );
+      document
+        .querySelectorAll(
+          ".sample, .card, .section-title, .hero-left, .hero-right"
+        )
+        .forEach((n) => ob.observe(n));
+
+      // Reminder scheduling: schedule next 10:00 and 20:00 occurrences (local)
+      (function scheduleReminders() {
+        const now = new Date();
+        const hours = [10, 20];
+        hours.forEach((h) => {
+          const next = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate(),
+            h,
+            0,
+            5,
+            0
+          ); // at :00:05
+          if (next - now <= 0) next.setDate(next.getDate() + 1);
+          const delay = next - now;
+          setTimeout(() => {
+            // show only if user saved number
+            const saved = JSON.parse(localStorage.getItem(SAVED_KEY) || "[]");
+            if (saved.length)
+              toast(
+                "📣 Reminder: FIRST ORDER 50% OFF — Check offers on WhatsApp"
+              );
+            // schedule next day same hour
+            setInterval(() => {
+              const s = JSON.parse(localStorage.getItem(SAVED_KEY) || "[]");
+              if (s.length)
+                toast(
+                  "📣 Reminder: FIRST ORDER 50% OFF — Check offers on WhatsApp"
+                );
+            }, 24 * 60 * 60 * 1000);
+          }, delay);
+        });
+      })();
+
+      // discount logic - the UI already shows discounted final prices (capped at 40) — handle message updates when ordering
+      // show a small info toast on load
+      window.addEventListener("load", () => {
+        // small welcome toast if not shown recently
+        const shown = localStorage.getItem("aapka_welcome");
+        if (!shown) {
+          toast("🔥 FIRST ORDER 50% OFF available on select packs (upto ₹40)");
+          localStorage.setItem("aapka_welcome", "1");
+        }
+      });
+
+      // Save contact when any order link with data-discounted is clicked (handled above in click listener)
+
+      // small helper: update WA float href to direct order
+      document.getElementById("whatsappFloat").href =
+        WA_BASE +
+        "?text=" +
+        encodeURIComponent("Hi Bhai! I want to order now (FIRST ORDER).");
+
+      // small keyboard shortcut: press 'o' to open WA
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "o") {
+          openWhatsAppWith("Hi Bhai! Quick Order please");
+        }
+      });
+    </script>
+  </body>
+</html>
